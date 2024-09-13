@@ -1,0 +1,41 @@
+---
+import { getLocale } from "astro-i18n-aut";
+import GenericLayout from "../layouts/GenericLayout.astro";
+
+const locale = getLocale(Astro.url);
+
+let title: string;
+let pageTitle: string;
+let pageSubtitle: string;
+switch (locale) {
+  case "es":
+    title = "Principal";
+    pageTitle = "¡Hola mundo! ¡Bienvenido a mi sitio!";
+    pageSubtitle = `
+	Bienvenido a nuestro sitio web, donde la innovación se combina con la simplicidad.
+	Nos dedicamos a brindar soluciones de alta calidad adaptadas a sus necesidades, garantizando una experiencia excepcional de principio a fin.
+	Ya sea que esté buscando asesoramiento de expertos, productos de vanguardia o servicios confiables, nuestro equipo está aquí para ayudarlo en cada paso del camino.
+	Explore nuestras diversas ofertas y descubra cómo podemos marcar la diferencia en su recorrido.
+	Su satisfacción es nuestra prioridad y estamos comprometidos a brindar excelencia en cada interacción.
+	Permítanos ser su socio de confianza para todas sus necesidades.
+	`;
+    break;
+  default:
+    title = "Home";
+    pageTitle = "Hello World! Welcome to my site!";
+    pageSubtitle = `
+		Welcome to our website, where innovation meets simplicity. 
+		We are dedicated to providing top-quality solutions tailored to your needs, ensuring an exceptional experience from start to finish. 
+		Whether you're looking for expert advice, cutting-edge products, or reliable services, our team is here to help you every step of the way. 
+		Explore our diverse offerings, and discover how we can make a difference in your journey. 
+		Your satisfaction is our priority, and we're committed to delivering excellence with every interaction. 
+		Let us be your trusted partner for all your needs.`;
+}
+---
+
+<GenericLayout title={title}>
+  <div class="container pb-5 pt-3">
+    <h1 class="display-6 fw-bold pb-3">{pageTitle}</h1>
+    <p>{pageSubtitle}</p>
+  </div>
+</GenericLayout>
